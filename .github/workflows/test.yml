@@ -1,0 +1,24 @@
+name: Change copyright
+
+on:
+  push:
+
+jobs:
+  copyright:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Find Copyright
+        run: |
+          # Use grep to search for the copyright text in all files, ignoring comments
+          grep -r --include=\*.{js,ts,html,css} -l -E '^(\s*\/\*\*[^*]*\*\w*[^/]*\w*\*\/)?\s*(\s*\/\*\*\s*\n\s*\*\s*\(\s*c\s*\)\s*Copyright\s*Ascensio\s*System\s*SIA\s*\d{4}\s*\n\s*\*\s*\n\s*\*\s*Licensed\s*under\s*the\s*Apache\s*License.*\n\s*\*\s*\n\s*\*\s*http:\/\/www.apache.org\/licenses\/LICENSE-2.0.*\n\s*\*\s*\n\s*\*\s*Unless\s*required\s*by\s*applicable\s*law\s*or\s*agreed\s*to\s*in\s*writing.*\n\s*\*\s*\n\s*\*\s*See\s*the\s*License\s*for\s*the\s*specific\s*language.*\n\s*\*\s*\n\s*\*\s*\*\//gm' .
+
+          # Store the output in a file
+          grep -r --include=\*.{js,ts,html,css} -l -E '^(\s*\/\*\*[^*]*\*\w*[^/]*\w*\*\/)?\s*(\s*\/\*\*\s*\n\s*\*\s*\(\s*c\s*\)\s*Copyright\s*Ascensio\s*System\s*SIA\s*\d{4}\s*\n\s*\*\s*\n\s*\*\s*Licensed\s*under\s*the\s*Apache\s*License.*\n\s*\*\s*\n\s*\*\s*http:\/\/www.apache.org\/licenses\/LICENSE-2.0.*\n\s*\*\s*\n\s*\*\s*Unless\s*required\s*by\s*applicable\s*law\s*or\s*agreed\s*to\s*in\s*writing.*\n\s*\*\s*\n\s*\*\s*See\s*the\s*License\s*for\s*the\s*specific\s*language.*\n\s*\*\s*\n\s*\*\s*\*\//gm' . > copyright_files.txt
+
+      - name: Display Copyright Files
+        run: |
+          # Display the list of files containing the copyright text
+          cat copyright_files.txt      
