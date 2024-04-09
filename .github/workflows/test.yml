@@ -15,7 +15,7 @@ jobs:
           # Use grep to search for the copyright text in all files, including comments
           ls -la
           pwd
-          apt install tree -y
+          sudo apt install tree -y
           tree
           grep -r -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/|/\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt
 
