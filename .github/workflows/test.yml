@@ -17,7 +17,7 @@ jobs:
           pwd
           apt install tree -y
           tree
-          grep -r --include=\*.{js,ts,html,css} -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/|/\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt
+          grep -r -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/|/\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt
 
       - name: Display Copyright Files
         run: |
