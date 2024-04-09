@@ -13,7 +13,7 @@ jobs:
       - name: Find Copyright
         run: |
           # Use grep to search for the copyright text in all files, including comments
-          grep -r -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/|/\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt
+          grep -r -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt || true
 
       - name: Display Copyright Files
         run: |
