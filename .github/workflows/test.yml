@@ -13,4 +13,4 @@ jobs:
       - name: REUSE SPDX SBOM
         uses: fsfe/reuse-action@v3
         with:
-          args: spdx
+          args: --include-submodules lint
