@@ -10,12 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Find Copyright
-        run: |
-          # Use grep to search for the copyright text in all files, including comments
-          grep -r -l -E '/\*\*.*Copyright Ascensio System SIA \d{4}.*\*/' . > copyright_files.txt || true
-
-      - name: Display Copyright Files
-        run: |
-          # Display the list of files containing the copyright text
-          cat copyright_files.txt
+      - name: REUSE SPDX SBOM
+        uses: fsfe/reuse-action@v3
+        with:
+          args: spdx
